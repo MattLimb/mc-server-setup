@@ -53,8 +53,24 @@ new:
     sudo chown -R minecraft:minecraft /srv/*
 
     # Enable and Start
-    sudo systemctl enable --now minecraft@{{name}}.service
+    sudo systemctl start minecraft@{{name}}.service
 
+news:
+    # Make Directory
+    sudo mkdir -p /srv/minecraft/{{name}}
+
+    # Link Fabric
+    sudo ln -sf /srv/minecraft/fabric-mc-server-1.24.4.jar /srv/minecraft/{{name}}/minecraft.jar
+
+    # Create EULA Agreement
+    sudo sh -c "echo 'eula=true' > /srv/minecraft/{{name}}/eula.txt"
+
+    # Override Environment
+    sudo sh -c "echo 'MIN_MEM={{server_min_memory}}' >> /srv/minecraft/{{name}}/systemd.conf"
+    sudo sh -c "echo 'MAX_MEM={{server_max_memory}}' >> /srv/minecraft/{{name}}/systemd.conf"
+
+    # Ensure Everything is Owned By Minecraft
+    sudo chown -R minecraft:minecraft /srv/*
 
 remove:
     # Disable and Stop
@@ -63,3 +79,9 @@ remove:
 
     # Remove Directory
     sudo rm -rf /srv/minecraft/{{name}}
+
+enable: 
+    sudo systemctl enable minecraft@{{name}}.service
+
+disable:
+    sudo systemctl disable minecraft@{{name}}.service
