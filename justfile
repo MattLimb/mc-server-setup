@@ -41,7 +41,6 @@ new:
 
     # Link Fabric
     sudo ln -sf /srv/minecraft/fabric-mc-server-1.24.4.jar /srv/minecraft/{{name}}/minecraft.jar
-    sudo ln -sf /srv/minectaft/mods /srv/minecraft/{{name}}/mods
 
     # Create EULA Agreement
     sudo sh -c "echo 'eula=true' > /srv/minecraft/{{name}}/eula.txt"
