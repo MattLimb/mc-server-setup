@@ -1,4 +1,8 @@
+set dotenv-load
+
 name := "server"
+server_min_memory := env_var_or_default("MIN_MEM", "1G")
+server_max_memory := env_var_or_default("MAX_MEM", "2G")
 
 
 default:
@@ -43,8 +47,8 @@ new:
     sudo sh -c "echo 'eula=true' > /srv/minecraft/{{name}}/eula.txt"
 
     # Override Environment
-    sudo sh -c "echo 'MIN_MEM=1G' >> /srv/minecraft/{{name}}/systemd.conf"
-    sudo sh -c "echo 'MAX_MEM=2G' >> /srv/minecraft/{{name}}/systemd.conf"
+    sudo sh -c "echo 'MIN_MEM={{server_min_memory}}' >> /srv/minecraft/{{name}}/systemd.conf"
+    sudo sh -c "echo 'MAX_MEM={{server_max_memory}}' >> /srv/minecraft/{{name}}/systemd.conf"
 
     # Ensure Everything is Owned By Minecraft
     sudo chown -R minecraft:minecraft /srv/*
