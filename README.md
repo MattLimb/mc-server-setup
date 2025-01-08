@@ -32,6 +32,10 @@ In all these commands `<name>` will be used to refer to the name of a Minecraft 
 | `just new`                                | DEFAULT way to make a new minecraft server. This creates a minecraft server named `server`.          |
 | `just name=<name> new`                    | Create a custom named minecraft server.                                                              |
 | `just name=<name> remove`                 | Stop and remove the named Minecraft server.                                                          |
+| `just name=<name> enable`                 | Start the `<name>`ed minecraft server from starting at boot time.                                    |
+| `systemctl enable minecraft@<name>`       | Start the `<name>`ed minecraft server from starting at boot time.                                    |
+| `just name=<name> disable`                | Start the `<name>`ed minecraft server from starting at boot time.                                    |
+| `systemctl disable minecraft@<name>`      | Stop the `<name>`ed minecraft server from starting at boot time.                                     |
 | `systemctl status minecraft@<name>`       | Get the current status of the `<name>`ed minecraft server.                                           |
 | `journalctl -efu minecraft@<name>`        | Get the logs for the `<name>`ed minecraft server. This auto-tails the logs, so press CTRL+C to exit. |
 | `systemctl stop minecraft@<name>`         | Stop the `<name>`ed minecraft server.                                                                |
