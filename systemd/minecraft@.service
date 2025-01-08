@@ -25,7 +25,7 @@ NoNewPrivileges=true
 # Set default variables
 Environment="MIN_MEM=1024M"
 Environment="MAX_MEM=1024M"
-Environment="JAVA_PARAMETERS=-XX:+UseG1GC -XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=2 -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10"
+Environment="JAVA_PARAMETERS=-XX:+UseG1GC -XX:ParallelGCThreads=2 -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10"
 Environment="JAR_PATH=minecraft.jar"
 
 # Override default variable values in environment file
